@@ -207,7 +207,7 @@ class GoogleAnalyticsStream(Stream):
                     )
 
                     if data_type == "integer":
-                        value = int(dimension)
+                        value = float(dimension)
                     elif data_type == "number":
                         value = float(dimension)
                     else:
@@ -224,7 +224,7 @@ class GoogleAnalyticsStream(Stream):
                         value = value.value
 
                     if metric_type == "integer":
-                        value = int(value)
+                        value = float(value)
                     elif metric_type == "number":
                         value = float(value)
 
