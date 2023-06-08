@@ -21,7 +21,7 @@ from google.analytics.data_v1beta.types import GetMetadataRequest
 
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 
-LOGGER = logging.Logger()
+LOGGER = logging.getLogger(__name__)
 
 class TapGoogleAnalytics(Tap):
     """GoogleAnalytics tap class."""
