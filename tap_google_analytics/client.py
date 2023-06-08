@@ -75,9 +75,9 @@ class GoogleAnalyticsStream(Stream):
     def _parse_other_attrb_type(self, attr_type):
         data_type = "string"
 
-        if attr_type in ["integer", "seconds"]:
-            data_type = "number"
-        elif attr_type in ["float", "percent", "time"]:
+        if attr_type in ["integer"]:
+            data_type = "integer"
+        elif attr_type in ["float", "percent", "time", "seconds"]:
             data_type = "number"
 
         return data_type
@@ -207,7 +207,7 @@ class GoogleAnalyticsStream(Stream):
                     )
 
                     if data_type == "integer":
-                        value = float(dimension)
+                        value = int(dimension)
                     elif data_type == "number":
                         value = float(dimension)
                     else:
@@ -224,7 +224,7 @@ class GoogleAnalyticsStream(Stream):
                         value = value.value
 
                     if metric_type == "integer":
-                        value = float(value)
+                        value = int(value)
                     elif metric_type == "number":
                         value = float(value)
 
