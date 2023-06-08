@@ -76,7 +76,7 @@ class GoogleAnalyticsStream(Stream):
         data_type = "string"
 
         if attr_type in ["integer", "seconds"]:
-            data_type = "integer"
+            data_type = "number"
         elif attr_type in ["float", "percent", "time"]:
             data_type = "number"
 
