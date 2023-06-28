@@ -19,10 +19,7 @@
   {
     "name": "traffic_sources",
     "dimensions": [
-      "date",
-      "source",
-      "medium",
-      "sourcePlatform"
+      "date"
     ],
     "metrics": [
       "activeUsers",

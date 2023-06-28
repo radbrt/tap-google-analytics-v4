@@ -4,6 +4,7 @@ import json
 import sys
 from pathlib import Path
 from typing import List, Tuple
+import logging
 
 # Service Account - Google Analytics Authorization
 from google.oauth2.service_account import Credentials as OAuthCredentials
@@ -20,6 +21,7 @@ from google.analytics.data_v1beta.types import GetMetadataRequest
 
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 
+LOGGER = logging.getLogger(__name__)
 
 class TapGoogleAnalytics(Tap):
     """GoogleAnalytics tap class."""
@@ -156,6 +158,10 @@ class TapGoogleAnalytics(Tap):
 
         request = GetMetadataRequest(name=f"properties/{self.config['property_id']}/metadata")
         results = self.analytics.get_metadata(request)
+
+        prop_id = self.config['property_id']
+        LOGGER.info(f"**** metadata for {prop_id}")
+        LOGGER.info(results)
 
         for metric in results.metrics:
             metrics[metric.api_name] = metric.type_.name.replace("TYPE_", "").lower()
